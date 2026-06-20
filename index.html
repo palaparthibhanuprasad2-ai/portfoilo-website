@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Palaparthi Bhanuprasad – B.Tech CSE Student, Web Developer & Java Programmer from Ramachandra College of Engineering." />
+  <meta name="keywords" content="Bhanuprasad, portfolio, web developer, Java, Python, HTML, CSS, CSE student" />
+  <title>Bhanuprasad | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0b0f1a;
+      --surface: #121826;
+      --card: #1a2235;
+      --border: rgba(255,255,255,0.08);
+      --accent: #4f8ef7;
+      --accent2: #7c5cfc;
+      --text: #e8eaf2;
+      --muted: #8891aa;
+      --heading-font: 'Space Grotesk', sans-serif;
+      --body-font: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(11,15,26,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: var(--heading-font);
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* SECTIONS */
+    section { padding: 5rem 0; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: 60px;
+      background: radial-gradient(ellipse at 60% 40%, rgba(79,142,247,0.07) 0%, transparent 65%),
+                  radial-gradient(ellipse at 20% 80%, rgba(124,92,252,0.06) 0%, transparent 55%);
+    }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(79,142,247,0.12);
+      color: var(--accent);
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 100px;
+      border: 1px solid rgba(79,142,247,0.25);
+      margin-bottom: 1.2rem;
+    }
+    .hero-name {
+      font-family: var(--heading-font);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700; line-height: 1.1;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .hero-name span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      background-clip: text;
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 400px;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0.6rem 1.4rem; border-radius: 8px; font-size: 0.9rem; font-weight: 500;
+      text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+    }
+    .btn-primary:hover { background: #3a7df5; }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* avatar card */
+    .avatar-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .avatar-circle {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--heading-font); font-size: 2rem; font-weight: 700; color: #fff;
+      margin: 0 auto 1rem;
+    }
+    .avatar-name { font-family: var(--heading-font); font-weight: 600; font-size: 1.05rem; color: #fff; }
+    .avatar-role { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.2rem; }
+    .stat-row { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.2rem; }
+    .stat { text-align: center; }
+    .stat-num { font-family: var(--heading-font); font-weight: 700; font-size: 1.3rem; color: var(--accent); }
+    .stat-label { font-size: 0.75rem; color: var(--muted); }
+
+    /* SECTION HEADER */
+    .section-label {
+      font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); font-weight: 500; margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: var(--heading-font); font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700; color: #fff; margin-bottom: 0.5rem;
+    }
+    .section-desc { color: var(--muted); max-width: 500px; margin-bottom: 2.5rem; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .about-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem;
+    }
+    .about-card h3 { font-family: var(--heading-font); font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
+    .about-card p { font-size: 0.9rem; color: var(--muted); }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .skill-group {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.25rem;
+    }
+    .skill-group-label {
+      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--accent); font-weight: 500; margin-bottom: 0.9rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-tag {
+      background: rgba(79,142,247,0.1); color: #a8c8ff;
+      font-size: 0.8rem; padding: 3px 10px; border-radius: 6px;
+      border: 1px solid rgba(79,142,247,0.2);
+    }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover { border-color: rgba(79,142,247,0.4); transform: translateY(-3px); }
+    .project-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: rgba(79,142,247,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; margin-bottom: 1rem;
+    }
+    .project-title { font-family: var(--heading-font); font-weight: 600; font-size: 1rem; color: #fff; margin-bottom: 0.4rem; }
+    .project-desc { font-size: 0.875rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.6; }
+    .project-techs { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .tech-badge {
+      font-size: 0.75rem; padding: 2px 9px; border-radius: 5px;
+      background: rgba(124,92,252,0.12); color: #c4b5fd;
+      border: 1px solid rgba(124,92,252,0.2);
+    }
+
+    /* EDUCATION */
+    .edu-timeline { display: flex; flex-direction: column; gap: 1rem; }
+    .edu-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.4rem 1.5rem;
+      display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; align-items: start;
+    }
+    .edu-degree { font-family: var(--heading-font); font-weight: 600; font-size: 0.95rem; color: #fff; }
+    .edu-inst { font-size: 0.875rem; color: var(--muted); margin-top: 2px; }
+    .edu-year { font-size: 0.8rem; color: var(--accent); font-weight: 500; white-space: nowrap; }
+    .edu-score {
+      font-size: 0.8rem; color: var(--muted);
+      grid-column: 1 / -1;
+      display: flex; gap: 0.4rem; align-items: center; margin-top: 4px;
+    }
+    .score-pill {
+      background: rgba(99,214,134,0.1); color: #86efac;
+      font-size: 0.75rem; padding: 2px 9px; border-radius: 5px;
+      border: 1px solid rgba(99,214,134,0.2);
+    }
+
+    /* CERTIFICATIONS */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .cert-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.2rem 1.4rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .cert-icon {
+      width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0;
+      background: rgba(250,180,60,0.12);
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    }
+    .cert-name { font-size: 0.875rem; color: var(--text); font-weight: 500; }
+    .cert-by { font-size: 0.78rem; color: var(--muted); }
+
+    /* CONTACT */
+    #contact { background: var(--surface); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-info-item {
+      display: flex; align-items: center; gap: 0.9rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 0.9rem;
+    }
+    .contact-icon {
+      width: 36px; height: 36px; border-radius: 9px;
+      background: rgba(79,142,247,0.12);
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    }
+    .contact-detail { font-size: 0.875rem; color: var(--text); }
+    .contact-detail span { display: block; font-size: 0.75rem; color: var(--muted); }
+
+    /* FORM */
+    .form-group { margin-bottom: 1rem; }
+    label { display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 5px; }
+    input, textarea {
+      width: 100%; background: var(--card); border: 1px solid var(--border);
+      border-radius: 9px; padding: 0.65rem 1rem; color: var(--text); font-family: var(--body-font);
+      font-size: 0.9rem; transition: border-color 0.2s; outline: none;
+    }
+    input:focus, textarea:focus { border-color: var(--accent); }
+    textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%; padding: 0.75rem;
+      background: var(--accent); color: #fff;
+      border: none; border-radius: 9px; font-size: 0.95rem; font-weight: 500;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .form-submit:hover { background: #3a7df5; }
+    #form-msg { font-size: 0.85rem; text-align: center; margin-top: 0.6rem; color: #86efac; display: none; }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.83rem; color: var(--muted);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* DIVIDER */
+    .divider { width: 40px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; margin-bottom: 1rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
+      .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .avatar-card { display: none; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.82rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">BP.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">B.Tech CSE &bull; 2024–Present</div>
+        <h1 class="hero-name">
+          Palaparthi<br /><span>Bhanuprasad</span>
+        </h1>
+        <p class="hero-sub">
+          Aspiring web developer and programmer with a strong foundation in Java, Python, and front-end development. Building real-world projects that solve problems.
+        </p>
+        <div class="hero-btns">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-outline" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+      <div class="avatar-card">
+        <div class="avatar-circle">BP</div>
+        <div class="avatar-name">Bhanuprasad</div>
+        <div class="avatar-role">Web Developer &amp; CSE Student</div>
+        <div style="height:1px;background:var(--border);margin:1rem 0;"></div>
+        <div style="font-size:0.82rem;color:var(--muted);text-align:left;line-height:1.9;">
+          📍 Andhra Pradesh, India<br />
+          🎓 Ramachandra College of Engineering<br />
+          💻 Java &bull; Python &bull; HTML/CSS<br />
+          🏆 Oracle Java Certified
+        </div>
+        <div class="stat-row">
+          <div class="stat"><div class="stat-num">3</div><div class="stat-label">Projects</div></div>
+          <div class="stat"><div class="stat-num">3</div><div class="stat-label">Certs</div></div>
+          <div class="stat"><div class="stat-num">7.26</div><div class="stat-label">CPI</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About Me</div>
+    <div class="divider"></div>
+    <h2 class="section-title">Who I Am</h2>
+    <p class="section-desc">A first-year Computer Science student passionate about technology, problem-solving, and building things for the web.</p>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>🚀 Currently Learning</h3>
+        <p>Deepening my knowledge in web development and exploring AI/ML concepts as part of my B.Tech curriculum and self-learning journey.</p>
+      </div>
+      <div class="about-card">
+        <h3>💡 Problem Solver</h3>
+        <p>I enjoy breaking down complex challenges into simple solutions. Practiced through hands-on coding in Java, Python, and C.</p>
+      </div>
+      <div class="about-card">
+        <h3>🌐 Web Focus</h3>
+        <p>Building responsive websites with clean UI. My portfolio site and student registration form are early examples of my front-end work.</p>
+      </div>
+      <div class="about-card">
+        <h3>🎯 Goal</h3>
+        <p>To grow as a full-stack developer, contribute to meaningful projects, and land a role where I can apply both my technical and creative skills.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Technical Skills</div>
+    <div class="divider"></div>
+    <h2 class="section-title">What I Work With</h2>
+    <p class="section-desc">A growing toolkit built through coursework, certifications, and project practice.</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Frontend</div>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Tools &amp; Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Windows</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Concepts</div>
+        <div class="skill-tags">
+          <span class="skill-tag">AI/ML Basics</span>
+          <span class="skill-tag">OOP</span>
+          <span class="skill-tag">Data Structures</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Projects</div>
+    <div class="divider"></div>
+    <h2 class="section-title">Things I've Built</h2>
+    <p class="section-desc">Hands-on projects that reflect my learning and growing technical skills.</p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-icon">🌐</div>
+        <div class="project-title">Personal Portfolio Website</div>
+        <p class="project-desc">A responsive portfolio to showcase my skills and academic projects. Focused on clean UI design and mobile-first layout optimization.</p>
+        <div class="project-techs">
+          <span class="tech-badge">HTML</span>
+          <span class="tech-badge">CSS</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">📋</div>
+        <div class="project-title">Student Registration Form</div>
+        <p class="project-desc">A web-based form with client-side validation to collect and handle user data accurately. Designed with a user-friendly interface.</p>
+        <div class="project-techs">
+          <span class="tech-badge">HTML</span>
+          <span class="tech-badge">CSS</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">🧮</div>
+        <div class="project-title">Basic Calculator</div>
+        <p class="project-desc">A console-based Java calculator supporting arithmetic operations with proper error handling for invalid inputs. Built to solidify OOP skills.</p>
+        <div class="project-techs">
+          <span class="tech-badge">Java</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">Education</div>
+    <div class="divider"></div>
+    <h2 class="section-title">Academic Background</h2>
+    <p class="section-desc">Building a strong foundation in computer science and engineering.</p>
+    <div class="edu-timeline">
+      <div class="edu-item">
+        <div>
+          <div class="edu-degree">B.Tech – Computer Science Engineering</div>
+          <div class="edu-inst">Ramachandra College of Engineering</div>
+          <div class="edu-score"><span class="score-pill">CPI: 7.26</span></div>
+        </div>
+        <div class="edu-year">2024 – Present</div>
+      </div>
+      <div class="edu-item">
+        <div>
+          <div class="edu-degree">Intermediate – MPC</div>
+          <div class="edu-inst">Sri Chaitanya College</div>
+          <div class="edu-score"><span class="score-pill">72.1%</span></div>
+        </div>
+        <div class="edu-year">2023 – 2024</div>
+      </div>
+      <div class="edu-item">
+        <div>
+          <div class="edu-degree">10th – SSC</div>
+          <div class="edu-inst">LBC High School</div>
+          <div class="edu-score"><span class="score-pill">305/500</span></div>
+        </div>
+        <div class="edu-year">2022</div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div style="margin-top:3rem;">
+      <div class="section-label">Certifications</div>
+      <div class="divider"></div>
+      <h2 class="section-title" style="font-size:1.5rem;">Achievements</h2>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-icon">🏅</div>
+          <div>
+            <div class="cert-name">C Programming Certification</div>
+            <div class="cert-by">Simplilearn</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">☕</div>
+          <div>
+            <div class="cert-name">Java Programming Certification</div>
+            <div class="cert-by">Oracle</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📘</div>
+          <div>
+            <div class="cert-name">Java Course Completion</div>
+            <div class="cert-by">Scalar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    </div>
+  </div>
+</section><!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <div class="divider"></div>
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-desc">Open to opportunities, collaborations, and conversations. Drop a message!</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-detail">
+            palaparthibhanuprasad2@gmail.com
+            <span>Email</span>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail">
+            +91 93923 89107
+            <span>Phone</span>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">💼</div>
+          <div class="contact-detail">
+            <a href="https://www.linkedin.com/in/" target="_blank" style="color:var(--accent);text-decoration:none;">LinkedIn Profile</a>
+            <span>Professional Network</span>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">🐙</div>
+          <div class="contact-detail">
+            <a href="https://github.com/" target="_blank" style="color:var(--accent);text-decoration:none;">GitHub Profile</a>
+            <span>Code &amp; Projects</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <form id="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="fname" placeholder="e.g. Ravi Kumar" required />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="femail" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="fmsg" placeholder="Hi Bhanu, I wanted to reach out about..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message →</button>
+          <div id="form-msg">✅ Thanks for reaching out! I'll get back to you soon.</div>
+          </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed &amp; built by <strong style="color:var(--text);">Palaparthi Bhanuprasad</strong> &nbsp;·&nbsp; 2024</p>
+  <p style="margin-top:6px;">
+    <a href="mailto:palaparthibhanuprasad2@gmail.com">Email</a> &nbsp;·&nbsp;
+    <a href="https://linkedin.com/in/" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
+    <a href="https://github.com/" target="_blank">GitHub</a>
+  </p>
+</footer>
+
+<script>
+async function handleSubmit(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("fname").value;
+  const email = document.getElementById("femail").value;
+  const message = document.getElementById("fmsg").value;
+
+  try {
+    const response = await fetch("http://localhost:5001/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message
+      })
+    });
+
+    const data = await response.json();
+
+    const msg = document.getElementById("form-msg");
+
+    if (data.success) {
+      msg.innerHTML = "✅ Message sent successfully!";
+      msg.style.display = "block";
+      document.getElementById("contact-form").reset();
+
+      setTimeout(() => {
+        msg.style.display = "none";
+      }, 4000);
+    } else {
+      alert("Failed to save message");
+    }
+
+  } catch (error) {
+    console.error(error);
+    alert("Cannot connect to backend server");
+  }
+}
+
+// Smooth active nav highlight
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 80) {
+      current = s.id;
+    }
+  });
+
+  navLinks.forEach(a => {
+    a.style.color =
+      a.getAttribute('href') === '#' + current
+        ? 'var(--text)'
+        : '';
+  });
+});
+</script>
+
+</body>
+</html>
